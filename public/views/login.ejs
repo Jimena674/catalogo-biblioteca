@@ -1,0 +1,39 @@
+<%- include('includes/header') %>
+
+<div class="container">
+
+<div class="login_container">
+
+    <figure class="login_figure">
+        <img src="../images/login-storyset.svg" alt="">
+        <a class="attribution" href="https://www.freepik.es/vector-gratis/ilustracion-concepto-inicio-sesion-computadora_20602919.htm#fromView=search&page=2&position=48&uuid=d4428218-9119-4a15-9d32-7f6def6d8d90">Imagen de storyset en Freepik</a>
+    </figure>
+    
+    <div class="login_box">
+
+        <h2>Iniciar Sesión</h2>
+
+        <form action="/login" method="post" class="login_form">
+            <div>
+                <label for="correo_usuario">Correo electrónico:</label>
+                <input type="email" name="correo_usuario" id="correo_usuario" placeholder="Ingresa tu correo.." required>
+            </div>
+            <div>
+                <label for="contraseña">Contraseña:</label>
+                <input type="password" name="contraseña" id="contraseña" placeholder="Ingresa tu contraseña.." required>
+            </div>
+            <button type="submit">Ingresar</button>
+        </form>
+
+        <p>¿Aún no tienes una cuenta?
+            <a href="/signup">Regístrate</a>
+        </p>
+    </div>
+
+</div>
+
+    
+
+</div>
+
+<%- include('includes/footer') %>

@@ -1,0 +1,66 @@
+<%- include('includes/header') %>
+
+<div class="container">
+
+    <div class="signup_container">
+        <figure class="signup_figure">
+            <img  src="../images/signup-storyset.svg" alt="">
+            <figcaption><a class="attribution" href="https://www.freepik.es/vector-gratis/ilustracion-concepto-inicio-sesion-computadora_20602919.htm#fromView=search&page=2&position=48&uuid=d4428218-9119-4a15-9d32-7f6def6d8d90">Imagen de storyset en Freepik</a></figcaption>
+        </figure>
+        
+        <div class="signup_box">
+
+            <h2>Registro Usuario</h2>
+    
+            <form action="/signup" method="post">
+                <div>
+                    <label for="nombre_usuario">Nombres:</label>
+                    <input type="text" name="nombre_usuario" id="nombre_usuario" required>
+                </div>
+    
+                <div>
+                    <label for="apellido_usuario">Apellidos:</label>
+                    <input type="text" name="apellido_usuario" id="apellido_usuario" required>
+                </div>
+    
+                <div>
+                    <label for="identificacion_usuario">Cédula: <span> (Sin puntos ni comas)</span> </label>
+                    <input type="text" name="identificacion_usuario" id="identificacion_usuario" required>
+                </div>
+                
+                <div>
+                    <label for="correo_usuario">Correo electrónico:</label>
+                    <input type="email" name="correo_usuario" id="correo_usuario" required>
+                </div>
+                
+                <div>
+                    <label for="telefono_usuario">Teléfono: <span> (Sin indicativo)</span></label>
+                    <input type="number" name="telefono_usuario" id="telefono_usuario" required>
+                </div>
+                
+                <div>
+                    <label for="direccion_usuario">Dirección:</label>
+                    <input type="text" name="direccion_usuario" id="direccion_usuario">
+                </div>
+                
+                <div>
+                    <label for="contraseña">Contraseña:</label>
+                    <input type="password" name="contraseña" id="contraseña" required>
+                </div>
+                
+    
+                <button type="submit">Registrarse</button>
+            </form>
+    
+            <p>¿Ya tienes un cuenta? 
+                <a href="/login">Inicia sesión</a>
+            </p>
+    
+        </div>
+    </div>
+    
+    
+
+</div>
+
+<%- include('includes/footer') %>

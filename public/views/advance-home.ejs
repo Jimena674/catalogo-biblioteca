@@ -1,0 +1,75 @@
+<%- include('includes/header') %>
+    <hr>
+    <main>
+
+        <div class="main_content">
+            <nav class="breadcrumbs container">
+                
+                <a class="breadcrumb" href="" typeof="webPage">Home /</a>
+            
+                <a class="breadcrumb_current_page" href="" typeof="webPage">Búsqueda Avanzada</a>
+                    
+            </nav>
+        </div>
+        
+        <div class="homepage_hero_advance">
+            <section>
+                <h1>Catálogo de Búsqueda</h1>
+                <p>
+                    Bienvenidos a nuestro catálogo en línea. La biblioteca Athena contiene más de <b>100 mil materiales impresos</b> existentes en nuestras sedes, para su consulta y préstamo.
+                    Este es un recurso invaluable para estudiantes, escritores y la comunidad en general de todo el mundo. Con tu usuario podrás solicitar préstamos en sala o externos y hacer renovaciones.
+                </p>
+            </section>
+        </div>
+        <div class="container">
+            <a class="attribution" href="https://www.freepik.es/foto-gratis/hombre-mano-recogiendo-libros-estante_7621143.htm#fromView=search&page=1&position=46&uuid=fe88d0ec-cc0d-48f8-9c50-fd06a334175d">Imagen de ArthurHidden en Freepik</a>
+        </div>
+    </main>
+
+    <div class="container ">
+        <div class="search_options_advance">
+            <a class="option " href="/">Búsqueda General</a>
+            <a class="option current" href="/advance-home">Búsqueda Avanzada</a>
+        </div>
+    
+        <div class="advance_search">
+    
+            <form class="advance_search_form" action="" target="_blank">
+    
+                <select class="menu_options">
+                    <option value="libre">Libre</option>
+                    <option value="titulo">Título</option>
+                    <option value="tema">Tema</option>
+                    <option value="autor">Autor</option>
+                </select>
+
+                <input class="search_input" type="text" placeholder="Escribe tu búsqueda aquí" required>
+    
+                <button class="search_button" type="submit">
+                    <i class="fa-solid fa-magnifying-glass search_icon"></i>
+                    Buscar
+                </button>
+            </form>
+
+            <form class="search_controls">
+                <fieldset>
+                    <legend>Elige la opción que se ajusta a tu búsqueda</legend>
+                    <div class="radio_controls">
+                        <label for=""><input id="any" name="any-exactly-first" value="any" type="radio">Palabra en cualquier posición</label>
+                        
+                        <label for=""><input id="exactly" name="any-exactly-first" value="exactly" type="radio">Palabra exacta</label>
+                        
+                        <label for=""><input id="first" name="any-exactly-first" value="first" type="radio">Palabra inicial</label>
+                    </div>
+                </fieldset>
+            </form>
+
+        </div>
+
+        <div class="text">
+            <p><b>Nuevo!</b> Prueba nuestras <b><a href="">recomendaciones</a></b> para descubrir los títulos más importantes de la temporada.</p>
+        </div>
+
+    </div>
+
+<%- include('includes/footer') %>
