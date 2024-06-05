@@ -44,16 +44,11 @@ app.get('/spotlight', (req, res) => {
     res.render('spotlight');
 });
 
-//Rutas administrativas
-app.get('/admin', (req, res) => {
-    res.render('admin');
-});
-
 //Ruta para insertar formulario contactos
 app.post('/SubmitContact', (req, res) => {
     const { nombre_contacto, apellido_contacto, correo_contacto, telefono_contacto, mensaje } = req.body;
 
-    db.query('INSERT INTO contacts (nombre_contacto, apellido_contacto, correo_contacto, telefono_contacto, mensaje) VALUE (?, ?, ?, ?, ?)', [nombre_contacto, apellido_contacto, correo_contacto, telefono_contacto, mensaje], (err, result) => {
+    db.query('INSERT INTO contacts (nombre_contacto, apellido_contacto, correo_contacto, telefono_contacto, mensaje) VALUES (?, ?, ?, ?, ?)', [nombre_contacto, apellido_contacto, correo_contacto, telefono_contacto, mensaje], (err, result) => {
         if(err) {
             console.log(err);
             res.send('Error al insertar usuario');
@@ -103,6 +98,54 @@ app.post('/login', async (req, res) => {
             } else {
                 res.send('Usuario no encontrado')
             }
+        }
+    });
+});
+
+//Rutas administrativas
+app.get('/admin', (req, res) => {
+    const countContactsSql = 'SELECT COUNT(*) AS count FROM contacts';
+    const countUsuariosSql = 'SELECT COUNT(*) AS count FROM usuarios';
+
+    db.query(countContactsSql, (err, contactsCountResult) => {
+        if(err){
+            return res.status(500).send('Error al momento de contar los contactos');
+        }
+        const totalContacts = contactsCountResult[0].count;
+
+        db.query( countUsuariosSql, (err, usuariosCountResult) => {
+            if(err){
+                return res.status(500).send('Error al momento de contar los usuarios');
+            }
+            const totalUsuarios = usuariosCountResult[0].count;
+
+            res.render('admin', { totalContacts, totalUsuarios });
+        });
+    });
+});
+
+//Ruta tabla de contactos en administrador
+app.get('/listar-contacts', (req, res) => {
+    db.query('SELECT * FROM contacts', (err, result) => {
+        if(err) {
+            console.log(err);
+            return res.status(500).send('Error al listar los contactos');
+        } else {
+            console.log(result);
+            res.render('listar-contacts', { contacts: result });
+        }
+    });
+});
+
+//Ruta tabla de usuarios en administrador
+app.get('/listar-usuarios', (req, res) => {
+    db.query('SELECT * FROM usuarios', (err, result) => {
+        if(err) {
+            console.log(err);
+            return res.status(500).send('Error al listar los usuarios');
+        } else {
+            console.log(result);
+            res.render('listar-usuarios', { usuarios: result });
         }
     });
 });
