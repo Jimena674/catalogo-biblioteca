@@ -150,4 +150,34 @@ app.get('/listar-usuarios', (req, res) => {
     });
 });
 
+//Ruta eliminar contacto en administrador
+app.post('/delete-contact', (req, res) => {
+    const { id } = req.body;
+
+    db.query('DELETE FROM contacts WHERE id = ?', [id], (err, result) => {
+        if(err) {
+            console.log(err);
+            return res.status(500).send('Error al eliminar el contacto');
+        } else {
+            console.log(result);
+            res.redirect('/listar-contacts');
+        }
+    });
+});
+
+//Ruta editar contacto en administrador
+app.get('/edit-contacts/:id', (req, res) => {
+    const { id } = req.params.id;
+
+    db.query('SELECT * FROM contacts WHERE id = ?', [id], (err, result) => {
+        if(err) {
+            console.log(err);
+            return res.status(500).send('Error al editar el contacto');
+        } else {
+            console.log(result);
+            res.render('edit-contacts', {contacts: result[0] });
+        }
+    });
+});
+
 module.exports = app;

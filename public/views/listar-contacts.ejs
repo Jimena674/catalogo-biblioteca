@@ -51,7 +51,17 @@
                     <td><%= contacts.correo_contacto %></td>
                     <td><%= contacts.telefono_contacto %></td>
                     <td><%= contacts.mensaje %></td>
-                    <td>X</td>
+                    <td>
+
+                      <form id="delete-form-<%= contacts.id %>" action="/delete-contact" method="post" style="display: inline;">
+                        <input type="hidden" name="id" value="<%= contacts.id %>">
+                        <button type="button" class="btn btn-danger" onclick="confirmDelete('<%= contacts.id %>')">Eliminar</button>
+                      </form>
+
+                      <form action="/edit-contacts/<%= contacts.id %>" method="get" style="display: inline;"></form>
+                      <a href="/edit-contacts"><button type="submit" class="btn btn-primary">Editar</button></a>
+
+                    </td>
                   </tr>
                   <% }); %>
                   </tbody>
@@ -83,4 +93,26 @@
   </div>
   <!-- /.content-wrapper -->
 
+  <script>
+    function confirmDelete(id) {
+      Swal.fire({
+      title: "¿Estás seguro en eliminar el contacto?",
+      text: "No podrás arrepentirte!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Si, elimínalo!"
+      }).then((result) => {
+        if (result.isConfirmed) {
+          document.getElementById(`delete-form-${id}`).submit();
+          Swal.fire({
+            title: "Eliminado!",
+            text: "El contacto ha sido eliminado.",
+            icon: "success"
+          });
+        }
+      });
+    }
+  </script>
 <%- include('includes/adminfooter') %>
